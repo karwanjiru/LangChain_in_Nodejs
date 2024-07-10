@@ -1,5 +1,5 @@
 // 1. Import necessary modules and libraries
-import { OpenAI } from 'langchain/llms';
+import { OpenAI } from "@langchain/openai";
 import { RetrievalQAChain } from 'langchain/chains';
 import { HNSWLib } from 'langchain/vectorstores';
 import { OpenAIEmbeddings } from 'langchain/embeddings';
@@ -19,7 +19,9 @@ const VECTOR_STORE_PATH = `${txtFilename}.index`;
 // 4. Define the main function runWithEmbeddings
 export const runWithEmbeddings = async () => {
   // 5. Initialize the OpenAI model with an empty configuration object
-  const model = new OpenAI({});
+  const model = new OpenAI({
+    model: "gpt-3.5-turbo-instruct"
+  });
 
   // 6. Check if the vector store file exists
   let vectorStore;
